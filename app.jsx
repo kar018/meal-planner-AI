@@ -38,7 +38,7 @@ const App = () => {
     
     try {
       // API call to the Gemini model.
-      const apiKey = "";
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
       
       const payload = {
@@ -187,35 +187,4 @@ const App = () => {
 
         {mealPlan && (
           <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Your Weekly Meal Plan</h2>
-            <div className="w-full">
-              <table className="table-fixed w-full divide-y divide-gray-300 rounded-lg overflow-hidden">
-                <thead className="bg-gray-200">
-                  <tr>
-                    {/* Adjusted column widths for a more compact and balanced look */}
-                    <th className="px-2 py-2 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-1/6">Day</th>
-                    <th className="px-2 py-2 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-5/18">Breakfast</th>
-                    <th className="px-2 py-2 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-5/18">Lunch</th>
-                    <th className="px-2 py-2 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-5/18">Dinner</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {mealPlan.map((day, index) => (
-                    <tr key={index} className="hover:bg-gray-100 transition-colors">
-                      <td className="px-2 py-2 text-xs font-medium text-gray-900 break-all">{day.day}</td>
-                      <td className="px-2 py-2 break-words">{renderMealText(day.breakfast)}</td>
-                      <td className="px-2 py-2 break-words">{renderMealText(day.lunch)}</td>
-                      <td className="px-2 py-2 break-words">{renderMealText(day.dinner)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default App;
+            <h2 className="text-2xl font-semibold text-gray-800
